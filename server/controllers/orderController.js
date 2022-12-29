@@ -34,3 +34,15 @@ exports.getOrders = async(req, res)=> {
         res.status(400).json({message: error.message});
     }
 };
+
+exports.markShipped = async(req, res)=> {
+    
+    const {id} = req.params;
+    try {
+      await Order.findByIdAndUpdate(id, {status: 'shipped'});
+
+      return res.status(200).json({message: "updated successfuly"})
+    } catch (error) {
+      return res.status(400).json({message: error.message});
+    }
+}

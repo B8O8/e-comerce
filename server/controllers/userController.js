@@ -4,7 +4,7 @@ const sendMail = require("../utils/email").sendMail;
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const {promisify} = require("util");
-const Order = require("../models/orderModel");
+
 
 const signToken = (id) => {
     return jwt.sign({id},process.env.JWT_SECRET,{expiresIn: process.env.JWT_EXPIRES_IN});
@@ -43,7 +43,7 @@ exports.signUp = async (req,res) => {
 
      
         const newUser = await User.create({
-            fullName: req.body.fullName,
+            username: req.body.username,
             email: req.body.email,
             password: req.body.password,
         });

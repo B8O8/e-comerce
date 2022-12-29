@@ -25,6 +25,13 @@ const userSchema = new mongoose.Schema({
         minLength: 8,
         maxLength: 32
     },
+    cart : {
+        type: Object,
+        default: {
+            total: 0,
+            count: 0
+        }
+    },
 
     passwordConfirm: {
         type: String,
